@@ -32,10 +32,10 @@ namespace RidingGame
             bg2.Top += speed;
 
             int enemy_speed = 10;
-            enemy1.Top += speed;
-            enemy2.Top += speed;
-            enemy3.Top += speed;
-            enemy4.Top += speed;
+            enemy1.Top += enemy_speed;
+            enemy2.Top += enemy_speed;
+            enemy3.Top += enemy_speed;
+            enemy4.Top += enemy_speed;
 
             if (bg1.Top >= 1005)
             {
