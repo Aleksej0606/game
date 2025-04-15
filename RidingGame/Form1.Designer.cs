@@ -31,35 +31,32 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bg1 = new System.Windows.Forms.PictureBox();
-            this.player = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.bg2 = new System.Windows.Forms.PictureBox();
+            this.player = new System.Windows.Forms.PictureBox();
+            this.enemy1 = new System.Windows.Forms.PictureBox();
+            this.enemy2 = new System.Windows.Forms.PictureBox();
+            this.enemy3 = new System.Windows.Forms.PictureBox();
+            this.enemy4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.bg1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bg2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.enemy1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.enemy2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.enemy3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.enemy4)).BeginInit();
             this.SuspendLayout();
             // 
             // bg1
             // 
-            this.bg1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bg1.BackgroundImage")));
+            this.bg1.BackColor = System.Drawing.Color.Transparent;
+            this.bg1.Image = ((System.Drawing.Image)(resources.GetObject("bg1.Image")));
             this.bg1.Location = new System.Drawing.Point(0, 0);
             this.bg1.Name = "bg1";
             this.bg1.Size = new System.Drawing.Size(1024, 1024);
             this.bg1.TabIndex = 0;
             this.bg1.TabStop = false;
             this.bg1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // player
-            // 
-            this.player.BackColor = System.Drawing.Color.DimGray;
-            this.player.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("player.BackgroundImage")));
-            this.player.Location = new System.Drawing.Point(455, 729);
-            this.player.Name = "player";
-            this.player.Size = new System.Drawing.Size(110, 223);
-            this.player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.player.TabIndex = 13;
-            this.player.TabStop = false;
-            this.player.Click += new System.EventHandler(this.pictureBox14_Click);
             // 
             // timer1
             // 
@@ -76,12 +73,70 @@
             this.bg2.TabIndex = 14;
             this.bg2.TabStop = false;
             // 
+            // player
+            // 
+            this.player.BackColor = System.Drawing.Color.Transparent;
+            this.player.Image = ((System.Drawing.Image)(resources.GetObject("player.Image")));
+            this.player.Location = new System.Drawing.Point(460, 718);
+            this.player.Name = "player";
+            this.player.Size = new System.Drawing.Size(110, 223);
+            this.player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.player.TabIndex = 13;
+            this.player.TabStop = false;
+            this.player.Click += new System.EventHandler(this.pictureBox14_Click);
+            // 
+            // enemy1
+            // 
+            this.enemy1.BackColor = System.Drawing.Color.Transparent;
+            this.enemy1.Image = ((System.Drawing.Image)(resources.GetObject("enemy1.Image")));
+            this.enemy1.Location = new System.Drawing.Point(64, -240);
+            this.enemy1.Name = "enemy1";
+            this.enemy1.Size = new System.Drawing.Size(110, 193);
+            this.enemy1.TabIndex = 15;
+            this.enemy1.TabStop = false;
+            this.enemy1.Click += new System.EventHandler(this.pictureBox1_Click_1);
+            // 
+            // enemy2
+            // 
+            this.enemy2.BackColor = System.Drawing.Color.Transparent;
+            this.enemy2.Image = ((System.Drawing.Image)(resources.GetObject("enemy2.Image")));
+            this.enemy2.Location = new System.Drawing.Point(844, -300);
+            this.enemy2.Name = "enemy2";
+            this.enemy2.Size = new System.Drawing.Size(110, 193);
+            this.enemy2.TabIndex = 16;
+            this.enemy2.TabStop = false;
+            // 
+            // enemy3
+            // 
+            this.enemy3.BackColor = System.Drawing.Color.Transparent;
+            this.enemy3.Image = ((System.Drawing.Image)(resources.GetObject("enemy3.Image")));
+            this.enemy3.Location = new System.Drawing.Point(323, -600);
+            this.enemy3.Name = "enemy3";
+            this.enemy3.Size = new System.Drawing.Size(110, 193);
+            this.enemy3.TabIndex = 17;
+            this.enemy3.TabStop = false;
+            // 
+            // enemy4
+            // 
+            this.enemy4.BackColor = System.Drawing.Color.Transparent;
+            this.enemy4.Image = ((System.Drawing.Image)(resources.GetObject("enemy4.Image")));
+            this.enemy4.Location = new System.Drawing.Point(593, -900);
+            this.enemy4.Name = "enemy4";
+            this.enemy4.Size = new System.Drawing.Size(110, 193);
+            this.enemy4.TabIndex = 18;
+            this.enemy4.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GrayText;
+            this.BackColor = System.Drawing.Color.DimGray;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1024, 1024);
+            this.Controls.Add(this.enemy4);
+            this.Controls.Add(this.enemy3);
+            this.Controls.Add(this.enemy2);
+            this.Controls.Add(this.enemy1);
             this.Controls.Add(this.player);
             this.Controls.Add(this.bg1);
             this.Controls.Add(this.bg2);
@@ -93,8 +148,12 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.bg1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bg2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.enemy1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.enemy2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.enemy3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.enemy4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -102,9 +161,13 @@
         #endregion
 
         private System.Windows.Forms.PictureBox bg1;
-        private System.Windows.Forms.PictureBox player;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox bg2;
+        private System.Windows.Forms.PictureBox player;
+        private System.Windows.Forms.PictureBox enemy1;
+        private System.Windows.Forms.PictureBox enemy2;
+        private System.Windows.Forms.PictureBox enemy3;
+        private System.Windows.Forms.PictureBox enemy4;
     }
 }
 

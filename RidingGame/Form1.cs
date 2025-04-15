@@ -27,17 +27,56 @@ namespace RidingGame
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int speed = 14;
+            int speed = 15;
             bg1.Top += speed;
             bg2.Top += speed;
+
+            int enemy_speed = 10;
+            enemy1.Top += speed;
+            enemy2.Top += speed;
+            enemy3.Top += speed;
+            enemy4.Top += speed;
 
             if (bg1.Top >= 1005)
             {
                 bg1.Top = 0;
                 bg2.Top = -1005;
             }
-        }
 
+            if (enemy1.Top >= 1005)
+            {
+                enemy1.Top = -240;
+                Random rand = new Random();
+                enemy1.Left = rand.Next(0, 150);
+            }
+
+            if (enemy2.Top >= 1005)
+            {
+                enemy2.Top = -600;
+                Random rand = new Random();
+                enemy2.Left = rand.Next(250, 400);
+            }
+
+            if (enemy3.Top >= 1005)
+            {
+                enemy3.Top = -900;
+                Random rand = new Random();
+                enemy3.Left = rand.Next(500, 650);
+            }
+
+            if (enemy4.Top >= 1005)
+            {
+                enemy4.Top = -300;
+                Random rand = new Random();
+                enemy4.Left = rand.Next(750, 900);
+            }
+
+            if (player.Bounds.IntersectsWith(enemy1.Bounds) || player.Bounds.IntersectsWith(enemy2.Bounds)
+                || player.Bounds.IntersectsWith(enemy3.Bounds) || player.Bounds.IntersectsWith(enemy1.Bounds))
+            {
+                timer1.Enabled = false;
+            }
+        }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             int speed = 10;
@@ -73,6 +112,11 @@ namespace RidingGame
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
         {
 
         }
