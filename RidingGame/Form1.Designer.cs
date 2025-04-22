@@ -38,6 +38,8 @@
             this.enemy2 = new System.Windows.Forms.PictureBox();
             this.enemy3 = new System.Windows.Forms.PictureBox();
             this.enemy4 = new System.Windows.Forms.PictureBox();
+            this.labelLose = new System.Windows.Forms.Label();
+            this.btnRestart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bg1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bg2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
@@ -126,6 +128,32 @@
             this.enemy4.TabIndex = 18;
             this.enemy4.TabStop = false;
             // 
+            // labelLose
+            // 
+            this.labelLose.AutoSize = true;
+            this.labelLose.BackColor = System.Drawing.Color.IndianRed;
+            this.labelLose.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelLose.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelLose.Location = new System.Drawing.Point(375, 234);
+            this.labelLose.Name = "labelLose";
+            this.labelLose.Size = new System.Drawing.Size(285, 42);
+            this.labelLose.TabIndex = 19;
+            this.labelLose.Text = "Вы проиграли!";
+            // 
+            // btnRestart
+            // 
+            this.btnRestart.BackColor = System.Drawing.Color.IndianRed;
+            this.btnRestart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnRestart.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnRestart.Location = new System.Drawing.Point(406, 347);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(214, 41);
+            this.btnRestart.TabIndex = 20;
+            this.btnRestart.Text = "Начать заново";
+            this.btnRestart.UseVisualStyleBackColor = false;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -133,6 +161,8 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1024, 1024);
+            this.Controls.Add(this.btnRestart);
+            this.Controls.Add(this.labelLose);
             this.Controls.Add(this.enemy4);
             this.Controls.Add(this.enemy3);
             this.Controls.Add(this.enemy2);
@@ -155,6 +185,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.enemy3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy4)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -168,6 +199,8 @@
         private System.Windows.Forms.PictureBox enemy2;
         private System.Windows.Forms.PictureBox enemy3;
         private System.Windows.Forms.PictureBox enemy4;
+        private System.Windows.Forms.Label labelLose;
+        private System.Windows.Forms.Button btnRestart;
     }
 }
 

@@ -7,14 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
+using Bogus.DataSets;
+using NAudio.Wave;
+
 
 namespace RidingGame
 {
     public partial class Form1: Form
     {
+        private bool lose = false;
+
         public Form1()
         {
             InitializeComponent();
+
+            labelLose.Visible = false;
+            btnRestart.Visible = false;
+            KeyPreview = true;
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -75,29 +85,38 @@ namespace RidingGame
                 || player.Bounds.IntersectsWith(enemy3.Bounds) || player.Bounds.IntersectsWith(enemy1.Bounds))
             {
                 timer1.Enabled = false;
+                labelLose.Visible = true;
+                btnRestart.Visible = true;
+
+                lose = true;
             }
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            int speed = 10;
-            if ((e.KeyCode == Keys.Left || e.KeyCode == Keys.A) && player.Left > 24)
-            {
-                player.Left -= speed;
-            }
+            if (lose == true) 
+                return;
+            else 
+            { 
+                int speed = 10;
+                if ((e.KeyCode == Keys.Left || e.KeyCode == Keys.A) && player.Left > 24)
+                {
+                    player.Left -= speed;
+                }
 
-            else if ((e.KeyCode == Keys.Right || e.KeyCode == Keys.D) && player.Right < 1000)
-            {
-                player.Left += speed;
-            }
+                else if ((e.KeyCode == Keys.Right || e.KeyCode == Keys.D) && player.Right < 1000)
+                {
+                    player.Left += speed;
+                }
 
-            else if ((e.KeyCode == Keys.Up || e.KeyCode == Keys.W) && player.Top > 0)
-            {
-                player.Top -= speed;
-            }
+                else if ((e.KeyCode == Keys.Up || e.KeyCode == Keys.W) && player.Top > 0)
+                {
+                    player.Top -= speed;
+                }
 
-            else if ((e.KeyCode == Keys.Down || e.KeyCode == Keys.S) && player.Top < 800)
-            {
-                player.Top += speed;
+                else if ((e.KeyCode == Keys.Down || e.KeyCode == Keys.S) && player.Top < 800)
+                {
+                    player.Top += speed;
+                }
             }
         }
 
@@ -119,6 +138,18 @@ namespace RidingGame
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+            enemy1.Top = -240;
+            enemy2.Top = -600;
+            enemy3.Top = -900;
+            enemy4.Top = -300;
+            labelLose.Visible = false;
+            btnRestart.Visible = false;
+            timer1.Enabled = true;
+            lose = false;
         }
     }
 }
