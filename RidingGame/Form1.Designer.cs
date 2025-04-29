@@ -40,6 +40,8 @@
             this.enemy4 = new System.Windows.Forms.PictureBox();
             this.labelLose = new System.Windows.Forms.Label();
             this.btnRestart = new System.Windows.Forms.Button();
+            this.coin = new System.Windows.Forms.PictureBox();
+            this.labelCoins = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bg1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bg2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
@@ -47,6 +49,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.enemy2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coin)).BeginInit();
             this.SuspendLayout();
             // 
             // bg1
@@ -154,6 +157,29 @@
             this.btnRestart.UseVisualStyleBackColor = false;
             this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
             // 
+            // coin
+            // 
+            this.coin.BackColor = System.Drawing.Color.Transparent;
+            this.coin.Image = ((System.Drawing.Image)(resources.GetObject("coin.Image")));
+            this.coin.Location = new System.Drawing.Point(490, -600);
+            this.coin.Name = "coin";
+            this.coin.Size = new System.Drawing.Size(45, 45);
+            this.coin.TabIndex = 21;
+            this.coin.TabStop = false;
+            this.coin.Click += new System.EventHandler(this.pictureBox1_Click_2);
+            // 
+            // labelCoins
+            // 
+            this.labelCoins.AutoSize = true;
+            this.labelCoins.BackColor = System.Drawing.Color.IndianRed;
+            this.labelCoins.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelCoins.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelCoins.Location = new System.Drawing.Point(873, 9);
+            this.labelCoins.Name = "labelCoins";
+            this.labelCoins.Size = new System.Drawing.Size(139, 29);
+            this.labelCoins.TabIndex = 22;
+            this.labelCoins.Text = "Монеты: 0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +187,8 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1024, 1024);
+            this.Controls.Add(this.labelCoins);
+            this.Controls.Add(this.coin);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.labelLose);
             this.Controls.Add(this.enemy4);
@@ -184,6 +212,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.enemy2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemy4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +230,8 @@
         private System.Windows.Forms.PictureBox enemy4;
         private System.Windows.Forms.Label labelLose;
         private System.Windows.Forms.Button btnRestart;
+        private System.Windows.Forms.PictureBox coin;
+        private System.Windows.Forms.Label labelCoins;
     }
 }
 

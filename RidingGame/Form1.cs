@@ -17,9 +17,35 @@ namespace RidingGame
     public partial class Form1: Form
     {
         private bool lose = false;
+        private int countCoins = 0;
+        private float volume = 0.02f;
+
+
+        private IWavePlayer waveOutDevice;
+        private AudioFileReader audioFileReader;
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            waveOutDevice = new WaveOutEvent();
+            audioFileReader = new AudioFileReader("C:\\Users\\DDs\\source\\repos\\RidingGame\\max-brhon-humanity.mp3");
+            audioFileReader.Volume = volume;
+            waveOutDevice.Init(audioFileReader);
+            waveOutDevice.Play();
+         
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            waveOutDevice.Stop();
+            waveOutDevice.Dispose();
+            audioFileReader.Dispose();
+            base.OnFormClosing(e);
+        }
+
 
         public Form1()
         {
+
             InitializeComponent();
 
             labelLose.Visible = false;
@@ -41,11 +67,20 @@ namespace RidingGame
             bg1.Top += speed;
             bg2.Top += speed;
 
-            int enemy_speed = 10;
+            int enemy_speed = 15;
             enemy1.Top += enemy_speed;
             enemy2.Top += enemy_speed;
             enemy3.Top += enemy_speed;
             enemy4.Top += enemy_speed;
+
+            coin.Top += speed;
+
+            if(coin.Top >= 1005)
+            {
+                coin.Top = -100;
+                Random rand = new Random();
+                coin.Left = rand.Next(150, 900);
+            }
 
             if (bg1.Top >= 1005)
             {
@@ -90,6 +125,15 @@ namespace RidingGame
 
                 lose = true;
             }
+
+            if(player.Bounds.IntersectsWith(coin.Bounds))
+            {
+                countCoins++;
+                labelCoins.Text = "Монеты: " + countCoins.ToString();
+                coin.Top = -100;
+                Random rand = new Random();
+                coin.Left = rand.Next(150, 900);
+            }
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -97,7 +141,7 @@ namespace RidingGame
                 return;
             else 
             { 
-                int speed = 10;
+                int speed = 15;
                 if ((e.KeyCode == Keys.Left || e.KeyCode == Keys.A) && player.Left > 24)
                 {
                     player.Left -= speed;
@@ -118,11 +162,6 @@ namespace RidingGame
                     player.Top += speed;
                 }
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void pictureBox14_Click(object sender, EventArgs e)
@@ -150,6 +189,14 @@ namespace RidingGame
             btnRestart.Visible = false;
             timer1.Enabled = true;
             lose = false;
+            countCoins = 0;
+            labelCoins.Text = "Монеты: 0";
+            coin.Top = -500;
+        }
+
+        private void pictureBox1_Click_2(object sender, EventArgs e)
+        {
+
         }
     }
 }
