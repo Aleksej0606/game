@@ -10,12 +10,17 @@ using System.Windows.Forms;
 using System.Media;
 using Bogus.DataSets;
 using NAudio.Wave;
+using System.IO;
 
 
 namespace RidingGame
 {
+
+
     public partial class Form1: Form
     {
+
+
         private bool lose = false;
         private int countCoins = 0;
         private float volume = 0.02f;
@@ -23,22 +28,27 @@ namespace RidingGame
 
         private IWavePlayer waveOutDevice;
         private AudioFileReader audioFileReader;
+        private Mp3FileReader mp3Reader;
+        private WaveChannel32 volumeStream;
 
         private void Form1_Load(object sender, EventArgs e)
         {
             waveOutDevice = new WaveOutEvent();
-            audioFileReader = new AudioFileReader("C:\\Users\\DDs\\source\\repos\\RidingGame\\max-brhon-humanity.mp3");
-            audioFileReader.Volume = volume;
-            waveOutDevice.Init(audioFileReader);
+            var mp3Stream = new MemoryStream(Properties.Resources.max_brhon_humanity);
+            mp3Reader = new Mp3FileReader(mp3Stream);
+            volumeStream = new WaveChannel32(mp3Reader);
+            waveOutDevice.Init(mp3Reader);
+            waveOutDevice.Volume = volume;
             waveOutDevice.Play();
-         
+
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             waveOutDevice.Stop();
             waveOutDevice.Dispose();
-            audioFileReader.Dispose();
+            volumeStream.Dispose();
+            mp3Reader.Dispose();
             base.OnFormClosing(e);
         }
 
